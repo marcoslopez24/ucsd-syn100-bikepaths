@@ -54,10 +54,6 @@ let activeAssessmentName = null;
 let hoveredAssessmentName = null;
 let presentationIndex = -1;
 
-function toLngLat(coords) {
-  return coords.map(([lat, lon]) => [lon, lat]);
-}
-
 function getActiveRisks() {
   return riskCheckboxes.filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
 }

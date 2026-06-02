@@ -130,23 +130,6 @@ body {
   gap: 12px;
 }
 
-.token-form {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.text-input,
-.select-input {
-  width: 100%;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  border-radius: 14px;
-  padding: 12px 14px;
-  font: inherit;
-  color: var(--ink);
-  background: white;
-}
-
 .primary-button,
 .ghost-button {
   border-radius: 14px;
@@ -169,17 +152,9 @@ body {
 }
 
 .header-actions,
-.button-stack {
+.card-actions {
   display: flex;
   gap: 10px;
-}
-
-.button-stack {
-  flex-direction: column;
-}
-
-.full-width {
-  width: 100%;
 }
 
 .filter-group {
@@ -188,8 +163,7 @@ body {
   margin: 14px 0;
 }
 
-.check-row,
-.select-label {
+.check-row {
   font-size: 0.95rem;
   color: var(--ink);
 }
@@ -257,18 +231,12 @@ body {
   border-radius: 999px;
 }
 
-.network { background: var(--network); }
 .sandag-lane { background: var(--sandag-lane); }
 .sandag-route { background: var(--sandag-route); }
 .sandag-multi { background: var(--sandag-multi); }
 .high { background: var(--high); }
 .medium { background: var(--medium); }
 .low { background: var(--low); }
-.crossing { background: var(--crossing); }
-.yield { background: var(--yield); }
-.hazard { background: var(--hazard); }
-.improvement { background: var(--improvement); }
-.wayfinding { background: var(--wayfinding); }
 
 .main-content {
   display: grid;
@@ -325,24 +293,6 @@ body {
   line-height: 1.45;
 }
 
-.map-placeholder {
-  position: absolute;
-  inset: 76px 18px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  border: 1px dashed rgba(15, 23, 42, 0.16);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.map-placeholder.hidden {
-  display: none;
-}
-
 .notes-panel {
   padding-bottom: 10px;
 }
@@ -359,13 +309,6 @@ body {
   border-radius: 20px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.9);
-}
-
-.route-card img {
-  width: 100%;
-  border-radius: 16px;
-  display: block;
-  margin-bottom: 12px;
 }
 
 .risk-pill {
@@ -418,10 +361,6 @@ body {
   transform: translateY(-1px);
 }
 
-.token-ok {
-  color: var(--low);
-}
-
 .popup-card {
   max-width: 300px;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
@@ -461,10 +400,6 @@ body {
 
   .stats-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .token-form {
-    flex-direction: column;
   }
 
   .header-actions,
