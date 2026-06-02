@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UCSD Bike Route Safety Map</title>
+    <link
+      href="https://unpkg.com/maplibre-gl@^5.24.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="hero-card">
+          <p class="eyebrow">UC San Diego</p>
+          <h1>Bike Route Safety Dashboard</h1>
+          <p class="hero-copy">
+            Jacob Goldman, Thomas Murphy, Shayan Khan, Ashman Shukla, Marcos Lopez
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Official bikeway data</span>
+            <span class="hero-tag">Risk-based assessment dots</span>
+            <span class="hero-tag">Interactive presentation map</span>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>Public Access</h2>
+          <p class="panel-copy">
+            This version loads automatically with a public no-login basemap, so anyone with the link can view it without editing access.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2>Filters</h2>
+          <div class="filter-group">
+            <label class="check-row"><input type="checkbox" value="High" checked /> High risk</label>
+            <label class="check-row"><input type="checkbox" value="Medium" checked /> Medium risk</label>
+            <label class="check-row"><input type="checkbox" value="Low" checked /> Low risk</label>
+          </div>
+          <div class="filter-group">
+            <label class="check-row"><input id="toggle-3d" type="checkbox" checked /> Presentation 3D mode</label>
+          </div>
+          <div class="filter-group">
+            <label class="check-row"><input id="toggle-bike-lanes" type="checkbox" checked /> Bike lanes</label>
+            <label class="check-row"><input id="toggle-bike-routes" type="checkbox" checked /> Bike routes</label>
+            <label class="check-row"><input id="toggle-multi-use" type="checkbox" checked /> Multi use paths</label>
+          </div>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-label">Assessments in view</span>
+            <strong id="stat-routes" class="stat-value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">High-risk assessments</span>
+            <strong id="stat-high" class="stat-value danger">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Average study score</span>
+            <strong id="stat-score" class="stat-value">0.00</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Official bikeway segments</span>
+            <strong id="stat-features" class="stat-value">0</strong>
+          </article>
+        </section>
+
+        <section class="panel legend-panel">
+          <h2>Legend</h2>
+          <div class="legend-row"><span class="legend-swatch sandag-lane"></span> Bike lanes</div>
+          <div class="legend-row"><span class="legend-swatch sandag-route"></span> Bike routes</div>
+          <div class="legend-row"><span class="legend-swatch sandag-multi"></span> Multi use paths</div>
+          <div class="legend-row"><span class="legend-dot high"></span> High-risk assessment location</div>
+          <div class="legend-row"><span class="legend-dot medium"></span> Medium-risk assessment location</div>
+          <div class="legend-row"><span class="legend-dot low"></span> Low-risk assessment location</div>
+        </section>
+      </aside>
+
+      <main class="main-content">
+        <section class="map-panel">
+          <div class="map-header">
+            <div>
+              <p class="eyebrow">Interactive Map</p>
+              <h2>Bikeway map</h2>
+            </div>
+            <div class="header-actions">
+              <button id="present-next" class="ghost-button" type="button">Present next</button>
+              <button id="clear-focus" class="ghost-button" type="button">Clear focus</button>
+              <button id="fit-all" class="ghost-button" type="button">Fit to data</button>
+            </div>
+          </div>
+          <div id="spotlight-card" class="spotlight-card hidden">
+            <div class="spotlight-copy">
+              <p class="eyebrow">Current Focus</p>
+              <div class="spotlight-title-row">
+                <h3 id="spotlight-title">Choose a location</h3>
+                <span id="spotlight-risk" class="risk-pill">Risk</span>
+              </div>
+              <p id="spotlight-meta" class="spotlight-meta"></p>
+              <p id="spotlight-summary" class="spotlight-summary"></p>
+            </div>
+          </div>
+          <div id="map"></div>
+        </section>
+
+        <section class="notes-panel">
+          <div class="notes-header">
+            <div>
+              <p class="eyebrow">Route Notes</p>
+              <h2>Investigation summaries</h2>
+            </div>
+          </div>
+          <div id="route-cards" class="route-cards"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/maplibre-gl@^5.24.0/dist/maplibre-gl.js"></script>
+    <script src="./map-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

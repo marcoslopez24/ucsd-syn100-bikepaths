@@ -1,0 +1,483 @@
+:root {
+  --bg-top: #f7fbff;
+  --bg-bottom: #edf4f1;
+  --panel: rgba(255, 255, 255, 0.92);
+  --border: rgba(15, 23, 42, 0.08);
+  --ink: #0f172a;
+  --muted: #475569;
+  --high: #d84b45;
+  --medium: #f0a202;
+  --low: #2a9d6f;
+  --network: #94a3b8;
+  --sandag-lane: #0197c4;
+  --sandag-route: #8bc53f;
+  --sandag-multi: #f48253;
+  --crossing: #2563eb;
+  --yield: #f97316;
+  --hazard: #b91c1c;
+  --improvement: #0f766e;
+  --wayfinding: #7c3aed;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(41, 128, 185, 0.14), transparent 25%),
+    radial-gradient(circle at top right, rgba(42, 157, 111, 0.12), transparent 26%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.sidebar,
+.main-content,
+.map-panel,
+.notes-panel {
+  min-height: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-card,
+.panel,
+.stat-card,
+.map-panel,
+.notes-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-card {
+  padding: 22px;
+  color: white;
+  background: linear-gradient(135deg, #0f172a 0%, #16324f 58%, #1f6f78 100%);
+}
+
+.hero-card h1,
+.panel h2,
+.map-header h2,
+.notes-header h2 {
+  margin: 0;
+}
+
+.hero-copy,
+.panel-copy,
+.panel-footnote,
+.notes-copy {
+  color: var(--muted);
+}
+
+.hero-card .hero-copy {
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 10px;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.hero-tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5ca9b4;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panel-header,
+.map-header,
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.token-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.text-input,
+.select-input {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: white;
+}
+
+.primary-button,
+.ghost-button {
+  border-radius: 14px;
+  padding: 11px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  border: none;
+  background: #0f172a;
+  color: white;
+}
+
+.ghost-button {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: white;
+  color: var(--ink);
+}
+
+.header-actions,
+.button-stack {
+  display: flex;
+  gap: 10px;
+}
+
+.button-stack {
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.filter-group {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.check-row,
+.select-label {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 16px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.stat-value {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.85rem;
+  font-weight: 800;
+}
+
+.danger {
+  color: var(--high);
+}
+
+.legend-panel {
+  display: grid;
+  gap: 8px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.legend-swatch,
+.legend-dot {
+  flex: 0 0 auto;
+}
+
+.legend-swatch {
+  width: 26px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.network { background: var(--network); }
+.sandag-lane { background: var(--sandag-lane); }
+.sandag-route { background: var(--sandag-route); }
+.sandag-multi { background: var(--sandag-multi); }
+.high { background: var(--high); }
+.medium { background: var(--medium); }
+.low { background: var(--low); }
+.crossing { background: var(--crossing); }
+.yield { background: var(--yield); }
+.hazard { background: var(--hazard); }
+.improvement { background: var(--improvement); }
+.wayfinding { background: var(--wayfinding); }
+
+.main-content {
+  display: grid;
+  grid-template-rows: minmax(420px, 62vh) minmax(260px, auto);
+  gap: 20px;
+}
+
+.map-panel,
+.notes-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-header,
+.notes-header {
+  padding: 18px 18px 0;
+}
+
+#map {
+  width: 100%;
+  height: calc(100% - 170px);
+  min-height: 520px;
+}
+
+.spotlight-card {
+  margin: 14px 18px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 250, 255, 0.96));
+}
+
+.spotlight-card.hidden {
+  display: none;
+}
+
+.spotlight-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.spotlight-title-row h3 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.spotlight-meta,
+.spotlight-summary {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 76px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  border: 1px dashed rgba(15, 23, 42, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.map-placeholder.hidden {
+  display: none;
+}
+
+.notes-panel {
+  padding-bottom: 10px;
+}
+
+.route-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 18px;
+}
+
+.route-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.route-card img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.risk-pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card-line {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.card-button {
+  flex: 1 1 auto;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+  background: white;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 10px 12px;
+}
+
+.route-card.active {
+  border-color: rgba(15, 23, 42, 0.18);
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.09);
+}
+
+.route-card.hovered {
+  border-color: rgba(15, 23, 42, 0.22);
+  box-shadow: 0 0 0 2px rgba(92, 169, 180, 0.28), 0 14px 26px rgba(15, 23, 42, 0.09);
+  transform: translateY(-1px);
+}
+
+.token-ok {
+  color: var(--low);
+}
+
+.popup-card {
+  max-width: 300px;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.popup-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.popup-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.popup-card p {
+  margin: 0 0 8px;
+  color: #334155;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    grid-template-rows: minmax(420px, 56vh) auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .token-form {
+    flex-direction: column;
+  }
+
+  .header-actions,
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .spotlight-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #map {
+    min-height: 420px;
+  }
+}
